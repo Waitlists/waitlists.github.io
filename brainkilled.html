@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the New Page</title>
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            background-color: #2c3e50;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            height: 100vh;
+        }
+        .random-text {
+            position: absolute;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="display: none;">Welcome to the Conspiracy!</h1>
+    <div id="randomContainer"></div>
+
+    <script>
+        const messages = [
+            "The truth is out there!",
+            "Did you know? Birds are not real.",
+            "The moon landing was faked.",
+            "You are being watched.",
+            "Everything is connected.",
+            "Follow the white rabbit.",
+            "What if I told you...?",
+            "Time is a flat circle.",
+            "Your thoughts control reality.",
+            "Pineapple on pizza? A government plot.",
+            "The FBI covered up the truth about 9/11.",
+            "There are hidden messages in the Bible.",
+            "Aliens exist, and they've visited Earth.",
+            "The government is hiding evidence of Bigfoot.",
+            "Vaccines are a method of population control.",
+            "The Titanic was sunk on purpose.",
+            "The Denver Airport is a hub for the Illuminati.",
+            "The COVID-19 pandemic was planned.",
+            "JFK was assassinated by the CIA.",
+            "The moon is a hologram.",
+            "The Rothschilds control the world economy.",
+            "The CIA invented the term 'conspiracy theory.'",
+            "Chemtrails are real and affect our health.",
+            "The 9/11 attacks were an inside job.",
+            "The earth is flat, and the truth is hidden.",
+            "Area 51 holds alien technology.",
+            "The lizard people are among us.",
+            "The media is controlled by a select few.",
+            "The real history of humanity is hidden.",
+            "Jesus was an alien.",
+            "Mind control is real and used by the elite.",
+            "The pharmaceutical industry profits from illness.",
+            "Social media is a tool for mass surveillance.",
+            "The New World Order is a real threat.",
+            "The Vatican controls global politics.",
+            "Your smartphone is a spy device.",
+            "The Assassination of Robert Kennedy was orchestrated.",
+            "The government is monitoring your online activity.",
+            "The CIA has been involved in drug trafficking.",
+            "Harp technology controls the weather.",
+            "9/11 was orchestrated to start the War on Terror.",
+            "COVID vaccines have microchips to track you.",
+            "The U.S. government has a secret space program.",
+            "There are secret underground bases.",
+            "Aliens are living among us disguised as humans.",
+            "The truth about ancient civilizations is covered up.",
+            "The world is run by a shadow government.",
+            "The Freemasons control global events.",
+            "The moon landing was staged in a Hollywood basement."
+        ];
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function createRandomText() {
+            const div = document.createElement('div');
+            div.className = 'random-text';
+            div.innerText = messages[Math.floor(Math.random() * messages.length)];
+            div.style.color = getRandomColor();
+            div.style.left = Math.random() * window.innerWidth + 'px';
+            div.style.top = Math.random() * window.innerHeight + 'px';
+            document.getElementById('randomContainer').appendChild(div);
+
+            // Animate the movement
+            setInterval(() => {
+                div.style.left = Math.random() * window.innerWidth + 'px';
+                div.style.top = Math.random() * window.innerHeight + 'px';
+            }, 2000); // Change position every 2 seconds
+        }
+
+        function generateRandomElements() {
+            setInterval(() => {
+                createRandomText();
+            }, 1500); // Create a new random text every 1.5 seconds
+        }
+
+        generateRandomElements();
+
+        // Redirect to 3.html after 15 seconds
+        setTimeout(() => {
+            window.location.href = "3.html";
+        }, 15000);
+    </script>
+</body>
+</html>

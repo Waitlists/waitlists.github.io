@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism is a Lie</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .cipher {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .success {
+            color: green;
+            font-size: 24px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Autism is a Lie</h1>
+    <div class="cipher">
+        <p>Cipher: Rn gsv xlwv lu zmbgsrmt.</p>
+    </div>
+    
+    <div class="input-container">
+        <input type="text" id="answer" placeholder="Your answer here" />
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <div class="success" id="successMessage">Correct! You have solved the cipher!</div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.trim().toLowerCase();
+            const correctAnswer = "im the code of anything"; // Decoded answer
+
+            if (answer === correctAnswer) {
+                document.getElementById('successMessage').style.display = 'block';
+                // Redirect to another page or take other actions after a delay
+                setTimeout(() => {
+                    window.location.href = "end.html"; // Change this to your next page
+                }, 2000); // Redirect after 2 seconds
+            } else {
+                alert("Incorrect! Try again.");
+            }
+        }
+    </script>
+</body>
+</html>

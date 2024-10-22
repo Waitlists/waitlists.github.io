@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You See Happiness?</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            margin-top: 20%;
+            font-size: 48px;
+        }
+        .eye {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid red;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .pupil {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: red;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Do You See Happiness?</h1>
+    <div class="eye">
+        <div class="pupil"></div>
+    </div>
+    <div class="eye">
+        <div class="pupil"></div>
+    </div>
+
+    <script>
+        const eyes = document.querySelectorAll('.eye');
+
+        // Position the eyes randomly within the viewport
+        eyes.forEach((eye) => {
+            const x = Math.random() * (window.innerWidth - 50);
+            const y = Math.random() * (window.innerHeight - 30);
+            eye.style.left = x + 'px';
+            eye.style.top = y + 'px';
+        });
+
+        // Move pupils to follow cursor
+        document.addEventListener('mousemove', (e) => {
+            const { clientX: mouseX, clientY: mouseY } = e;
+            eyes.forEach((eye) => {
+                const rect = eye.getBoundingClientRect();
+                const eyeX = rect.left + rect.width / 2;
+                const eyeY = rect.top + rect.height / 2;
+
+                const deltaX = mouseX - eyeX;
+                const deltaY = mouseY - eyeY;
+
+                const angle = Math.atan2(deltaY, deltaX);
+                const distance = Math.min(10, Math.sqrt(deltaX * deltaX + deltaY * deltaY));
+
+                const pupil = eye.querySelector('.pupil');
+                pupil.style.transform = `translate(${distance * Math.cos(angle)}px, ${distance * Math.sin(angle)}px)`;
+            });
+        });
+
+        // Redirect to 4.html after 10 seconds
+        setTimeout(() => {
+            window.location.href = "4.html";
+        }, 10000); // 10 seconds
+    </script>
+</body>
+</html>

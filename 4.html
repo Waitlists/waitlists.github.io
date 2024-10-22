@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weird Optic Grids</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            width: 80vmin; /* Responsive grid size */
+            height: 80vmin; /* Responsive grid size */
+            border: 2px solid white;
+            position: relative;
+            filter: blur(2px); /* Blurring effect */
+        }
+        .grid {
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Thin white lines */
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0); /* Initial transparent */
+            transition: background-color 0.3s ease; /* Smooth color change */
+        }
+        .link {
+            color: red;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 24px;
+            margin-top: 20px;
+            filter: blur(1px); /* Slightly blurred effect */
+            transition: filter 0.3s; /* Smooth blur transition */
+        }
+        .link:hover {
+            filter: blur(0); /* Clear blur on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <!-- 100 grid cells -->
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+        <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+            <div class="grid"></div>
+        </div>
+    </div>
+    
+    <a href="autism.html" class="link">Autism is a lie</a> <!-- New hyperlink to the local page -->
+
+    <script>
+        const grids = document.querySelectorAll('.grid');
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function fillRandomGrids() {
+            const indicesToFill = new Set();
+            while (indicesToFill.size < 4) {
+                indicesToFill.add(Math.floor(Math.random() * grids.length));
+            }
+
+            grids.forEach((grid, index) => {
+                grid.style.backgroundColor = indicesToFill.has(index) ? getRandomColor() : 'rgba(0, 0, 0, 0)';
+            });
+        }
+
+        // Fill random grids every second
+        setInterval(fillRandomGrids, 1000);
+    </script>
+</body>
+</html>
